@@ -261,7 +261,7 @@ class Response(object):
         if isinstance(data, unicode):
             try:
                 return data.encode('us-ascii')
-            except UnicodeError, e:
+            except UnicodeError as e:
                 raise
         else:
             return str(data)
@@ -271,13 +271,13 @@ def handle_request(environ, start_response):
     """The main handler. Dispatches to the user's code."""
     try:
         request = Request(environ, start_response)
-    except Exception, e:
+    except Exception as e:
         return handle_error(e)
 
     try:
         (re_url, url, callback), kwargs = find_matching_url(request)
         response = callback(request, **kwargs)
-    except Exception, e:
+    except Exception as e:
         return handle_error(e, request)
 
     if not isinstance(response, Response):
