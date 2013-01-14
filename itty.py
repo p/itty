@@ -616,12 +616,12 @@ def run_itty(server='wsgiref', host='localhost', port=8080, config=None):
 
     # AppEngine seems to echo everything, even though it shouldn't. Accomodate.
     if server != 'appengine':
-        print 'itty starting up (using %s)...' % server
-        print 'Listening on http://%s:%s...' % (host, port)
-        print 'Use Ctrl-C to quit.'
-        print
+        print('itty starting up (using %s)...' % server)
+        print('Listening on http://%s:%s...' % (host, port))
+        print('Use Ctrl-C to quit.')
+        print()
 
     try:
         WSGI_ADAPTERS[server](host, port)
     except KeyboardInterrupt:
-        print 'Shutting down. Have a nice day!'
+        print('Shutting down. Have a nice day!')
